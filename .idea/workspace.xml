@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d1701b92-e581-4b4e-81e8-a5a4eb1c332b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +218,7 @@
       <workItem from="1615517131575" duration="598000" />
       <workItem from="1615521581236" duration="5536000" />
       <workItem from="1615792104943" duration="46833000" />
-      <workItem from="1616465219680" duration="2100000" />
+      <workItem from="1616465219680" duration="2580000" />
     </task>
     <servers />
   </component>
