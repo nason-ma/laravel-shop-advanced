@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 /**
  * App\Models\Category
@@ -19,8 +18,25 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Category newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Category query()
  * @mixin \Eloquent
+ * @property int $id
+ * @property string $name
+ * @property int|null $parent_id
+ * @property bool $is_directory
+ * @property int $level
+ * @property string $path
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read mixed $full_name
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereIsDirectory($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereLevel($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category wherePath($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereUpdatedAt($value)
  */
-class Category extends Model
+class Category extends BaseModel
 {
     use HasFactory;
 
@@ -38,7 +54,7 @@ class Category extends Model
         // trim($str, '-') 将字符串两端的 - 符号去除
         // explode() 将字符串以 - 为分隔切割为数组
         // 最后 array_filter 将数组中的空值移除, If no callback is supplied, all entries of input equal to FALSE (see converting to boolean) will be removed. 如果没有给出回调函数，所有的等于 FALSE 的元素将会被移除掉
-        array_filter(explode('-', trim($this->path, '-')));
+        return array_filter(explode('-', trim($this->path, '-')));
     }
 
     /**

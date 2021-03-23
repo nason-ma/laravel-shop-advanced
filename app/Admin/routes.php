@@ -33,4 +33,12 @@ Route::group([
     $router->get('coupon_codes/{id}/edit', 'CouponCodesController@edit')->name('coupon_codes.edit');
     $router->put('coupon_codes/{id}', 'CouponCodesController@update')->name('coupon_codes.update');
     $router->delete('coupon_codes/{id}', 'CouponCodesController@destroy')->name('coupon_codes.destroy');
+
+    $router->get('categories', 'CategoriesController@index')->name('categories.index');
+    $router->get('categories/create', 'CategoriesController@create')->name('categories.create');
+    $router->get('categories/{id}/edit', 'CategoriesController@edit')->name('categories.edit');
+    $router->post('categories', 'CategoriesController@store')->name('categories.store');
+    $router->put('categories/{id}', 'CategoriesController@update')->name('categories.update');
+    $router->delete('categories/{id}', 'CategoriesController@destroy')->name('categories.destroy');
+    $router->get('api/categories', 'CategoriesController@apiIndex')->name('categories.api_index');
 });
