@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="d1701b92-e581-4b4e-81e8-a5a4eb1c332b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/ProductsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/CrowdfundingProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CrowdfundingProduct.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/admin.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/admin.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_23_205823_create_crowdfunding_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_23_205823_create_crowdfunding_products_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +222,7 @@
       <workItem from="1615517131575" duration="598000" />
       <workItem from="1615521581236" duration="5536000" />
       <workItem from="1615792104943" duration="46833000" />
-      <workItem from="1616465219680" duration="16539000" />
+      <workItem from="1616465219680" duration="19040000" />
     </task>
     <servers />
   </component>
@@ -226,10 +230,14 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="280" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616468238266">
+    <state x="690" y="280" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616505254259">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="690" y="280" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1616468238266" />
+    <state x="690" y="280" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1616505254259" />
+    <state x="92" y="92" width="1736" height="866" key="DiffContextDialog" timestamp="1616509232171">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="92" y="92" width="1736" height="866" key="DiffContextDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1616509232171" />
     <state x="728" y="245" key="NewPhpClassDialog" timestamp="1616485105393">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -250,6 +258,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="640" y="349" key="com.intellij.ide.util.TipDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1615371471314" />
+    <state x="753" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1616505232734">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="753" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1050@0.0.1920.1050" timestamp="1616505232734" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1615371394904">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
