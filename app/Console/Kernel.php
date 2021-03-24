@@ -18,13 +18,16 @@ class Kernel extends ConsoleKernel
 
     /**
      * Define the application's command schedule.
-     *
+     * 注册定时任务
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
      */
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+
+        // 每分钟执行一次
+        $schedule->command('cron:finish-crowdfunding')->everyMinute();
     }
 
     /**
