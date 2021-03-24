@@ -42,9 +42,9 @@ Route::group([
     $router->delete('categories/{id}', 'CategoriesController@destroy')->name('categories.destroy');
     $router->get('api/categories', 'CategoriesController@apiIndex')->name('categories.api_index');
 
-    $router->get('crowdfunding_products', 'CrowdfundingProductsController@index')->name('crowdfunding.index');
-    $router->get('crowdfunding_products/create', 'CrowdfundingProductsController@create')->name('crowdfunding.create');
-    $router->post('crowdfunding_products', 'CrowdfundingProductsController@store')->name('crowdfunding.store');
-    $router->get('crowdfunding_products/{id}/edit', 'CrowdfundingProductsController@edit')->name('crowdfunding.edit');
-    $router->put('crowdfunding_products/{id}', 'CrowdfundingProductsController@update')->name('crowdfunding.update');
+    $router->get('crowdfunding_products', 'CrowdfundingProductsController@index')->name('crowdfunding_products.index');
+    $router->get('crowdfunding_products/create', 'CrowdfundingProductsController@create')->name('crowdfunding_products.create');
+    $router->post('crowdfunding_products', 'CrowdfundingProductsController@store')->name('crowdfunding_products.store');
+    $router->get('crowdfunding_products/{id}/edit', 'CrowdfundingProductsController@edit')->name('crowdfunding_products.edit');
+    $router->put('crowdfunding_products/{id}', 'CrowdfundingProductsController@update')->name('crowdfunding_products.update');
 });
