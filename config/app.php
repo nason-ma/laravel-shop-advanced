@@ -232,4 +232,7 @@ return [
 
     // 订单延迟取消时间 秒
     'order_ttl' => 1800,
+
+    // ngrok 分配的域名
+    'ngrok_url' => env('NGROK_URL'),
 ];
