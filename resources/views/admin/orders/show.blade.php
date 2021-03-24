@@ -48,8 +48,10 @@
                 </tr>
                 <!-- 订单发货开始 -->
                 <!-- 如果订单未发货，展示发货表单 -->
-                @if($order->ship_status === \App\Models\Order::SHIP_STATUS_PENDING)
-                    @if($order->refund_status !== \App\Models\Order::REFUND_STATUS_SUCCESS)
+                @if($order->ship_status === \App\Models\Order::SHIP_STATUS_PENDING && $order->paid_at)
+                    @if($order->refund_status !== \App\Models\Order::REFUND_STATUS_SUCCESS &&
+                        ($order->type !== \App\Models\Order::TYPE_CROWDFUNDING ||
+                        $order->items[0]->product->crowdfunding->status === \App\Models\CrowdfundingProduct::STATUS_SUCCESS))
                     <tr>
                         <td colspan="4">
                             <form action="{{ route('admin.orders.ship', [$order->id]) }}" method="post" class="form-inline">
@@ -78,8 +80,8 @@
                         </td>
                     </tr>
                     @endif
-                @else
-                    <!-- 否则展示物流公司和物流单号 -->
+                @elseif($order->ship_status === \App\Models\Order::SHIP_STATUS_DELIVERED)
+                    <!-- 展示物流公司和物流单号 -->
                     <tr>
                         <td>物流公司：</td>
                         <td>{{ $order->ship_data['express_company'] }}</td>
