@@ -4,6 +4,30 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * App\Models\CrowdfundingProduct
+ *
+ * @property int $id
+ * @property int $product_id
+ * @property string $target_amount
+ * @property string $total_amount
+ * @property int $user_count
+ * @property \Illuminate\Support\Carbon $end_at
+ * @property string $status
+ * @property-read mixed $percent
+ * @property-read \App\Models\Product $product
+ * @method static \Illuminate\Database\Eloquent\Builder|CrowdfundingProduct newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CrowdfundingProduct newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CrowdfundingProduct query()
+ * @method static \Illuminate\Database\Eloquent\Builder|CrowdfundingProduct whereEndAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CrowdfundingProduct whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CrowdfundingProduct whereProductId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CrowdfundingProduct whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CrowdfundingProduct whereTargetAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CrowdfundingProduct whereTotalAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CrowdfundingProduct whereUserCount($value)
+ * @mixin \Eloquent
+ */
 class CrowdfundingProduct extends BaseModel
 {
     use HasFactory;

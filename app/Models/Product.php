@@ -37,6 +37,12 @@ use Illuminate\Support\Str;
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereUpdatedAt($value)
  * @mixin \Eloquent
  * @property-read mixed $image_url
+ * @property string $type
+ * @property int|null $category_id
+ * @property-read \App\Models\Category|null $category
+ * @property-read \App\Models\CrowdfundingProduct|null $crowdfunding
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereType($value)
  */
 class Product extends BaseModel
 {

@@ -54,6 +54,8 @@ use Ramsey\Uuid\Uuid;
  * @property int|null $coupon_code_id
  * @property-read \App\Models\CouponCode|null $couponCode
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereCouponCodeId($value)
+ * @property string $type
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereType($value)
  */
 class Order extends BaseModel
 {

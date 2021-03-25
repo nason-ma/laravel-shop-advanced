@@ -40,6 +40,7 @@ use Illuminate\Support\Str;
  * @method static \Illuminate\Database\Eloquent\Builder|CouponCode whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CouponCode whereUsed($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CouponCode whereValue($value)
+ * @property-read mixed $description
  */
 class CouponCode extends BaseModel
 {
