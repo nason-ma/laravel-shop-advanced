@@ -5,7 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/CommonProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/CommonProductsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/ProductFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ProductFactory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/products/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -227,7 +227,9 @@
       <workItem from="1615517131575" duration="598000" />
       <workItem from="1615521581236" duration="5536000" />
       <workItem from="1615792104943" duration="46833000" />
-      <workItem from="1616465219680" duration="56965000" />
+      <workItem from="1616465219680" duration="57851000" />
+      <workItem from="1616917018304" duration="42000" />
+      <workItem from="1616919227727" duration="525000" />
     </task>
     <servers />
   </component>

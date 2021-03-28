@@ -58,7 +58,7 @@ class Product extends BaseModel
     protected $fillable = [
         'title', 'description', 'image', 'on_sale',
         'rating', 'sold_count', 'review_count', 'price',
-        'category_id', 'type'
+        'category_id', 'type', 'long_title'
     ];
 
     protected $casts = [
