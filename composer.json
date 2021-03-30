@@ -12,6 +12,7 @@
         "barryvdh/laravel-ide-helper": "^2.9",
         "codingyu/ueditor": "^3.0",
         "doctrine/dbal": "~2.12",
+        "elasticsearch/elasticsearch": "~7.11",
         "encore/laravel-admin": "1.8.*",
         "endroid/qr-code": "^4.0",
         "fideloper/proxy": "^4.4",
