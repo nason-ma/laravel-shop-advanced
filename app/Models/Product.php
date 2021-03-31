@@ -177,4 +177,11 @@ class Product extends BaseModel
 
         return $arr;
     }
+
+    public function scopeByIds($query, $ids)
+    {
+        // Mysql 的 in 查询并不会按照参数的顺序把结果返回，所以需要使用 Mysql 的 FIND_IN_SET
+        // orderByRaw 可以让我们用原生的 SQL 来给查询结果排序
+        return $query->whereIn('id', $ids)->orderByRaw(sprintf("FIND_IN_SET(id, '%s')", join(',', $ids)));
+    }
 }

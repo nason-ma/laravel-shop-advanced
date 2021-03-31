@@ -8,6 +8,7 @@ use App\Models\OrderItem;
 use App\Models\Product;
 use App\SearchBuilders\ProductSearchBuilder;
 use App\Services\CategoryService;
+use App\Services\ProductService;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -73,12 +74,8 @@ class ProductsController extends Controller
         $result = app('es')->search($builder->getParams());
         // 通过 collect 函数将返回结果转为集合，并通过集合的 pluck 方法取到返回的商品 ID 数组
         $productIds = collect($result['hits']['hits'])->pluck('_id')->all();
-        // 通过 whereIn 方法从数据库中读取商品数据
-        $products = Product::whereIn('id', $productIds)
-            // Mysql 的 in 查询并不会按照参数的顺序把结果返回，所以需要使用 Mysql 的 FIND_IN_SET
-            // orderByRaw 可以让我们用原生的 SQL 来给查询结果排序
-            ->orderByRaw(sprintf("FIND_IN_SET(id, '%s')", join(',', $productIds)))
-            ->get();
+        // 获取商品数据
+        $products = Product::query()->byIds($productIds)->get();
         // Eloquent 的 paginate() 方法实现商品分页，paginate() 方法会返回一个 LengthAwarePaginator 对象，
         // 我们在前端模板中也使用了 LengthAwarePaginator 对象的 render() 方法来输出分页代码，
         // 因此我们根据 Elasticsearch 的返回数据手动创建了一个 LengthAwarePaginator 对象，这样前端代码就不需要修改了。
@@ -115,7 +112,7 @@ class ProductsController extends Controller
         ]);
     }
 
-    public function show(Product $product, Request $request)
+    public function show(Product $product, ProductService $productService, Request $request)
     {
         // 判断商品是否已经上架，如果没有上架则抛出异常。
         if (!$product->on_sale) {
@@ -137,7 +134,16 @@ class ProductsController extends Controller
             ->limit(10) // 取出 10 条
             ->get();
 
-        return view('products.show', compact('product', 'favored', 'reviews'));
+        $similarProductIds = $productService->getSimilarProductIds($product, 4);
+        // 根据 Elasticsearch 搜索出来的商品 ID 从数据库中读取商品数据
+        $similarProducts = Product::query()->byIds($similarProductIds)->get();
+
+        return view('products.show', [
+            'product' => $product,
+            'favored' => $favored,
+            'reviews' => $reviews,
+            'similar' => $similarProducts,
+        ]);
     }
 
     public function favor(Product $product, Request $request)
