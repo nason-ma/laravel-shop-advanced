@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 /**
@@ -43,6 +44,11 @@ use Illuminate\Support\Str;
  * @property-read \App\Models\CrowdfundingProduct|null $crowdfunding
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereCategoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereType($value)
+ * @property string $long_title
+ * @property-read mixed $grouped_properties
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ProductProperty[] $properties
+ * @property-read int|null $properties_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereLongTitle($value)
  */
 class Product extends BaseModel
 {
@@ -134,5 +140,39 @@ class Product extends BaseModel
                 // 使用 map 方法将属性集合变为属性值集合
                 return $properties->pluck('value')->all();
             });
+    }
+
+    public function toESArray()
+    {
+        // 只取出需要的字段
+        $arr = Arr::only($this->toArray(), [
+            'id',
+            'type',
+            'title',
+            'category_id',
+            'long_title',
+            'on_sale',
+            'rating',
+            'sold_count',
+            'review_count',
+            'price',
+        ]);
+
+        // 如果商品有类目，则 category 字段为类目名数组，否则为空字符串
+        $arr['category'] = $this->category ? explode(' - ', $this->category->full_name) : '';
+        // 类目的 path 字段
+        $arr['category_path'] = $this->category ? $this->category->path : '';
+        // PHP 内置的函数 strip_tags 函数可以将 html 标签去除
+        $arr['description'] = strip_tags($this->description);
+        // 只取出需要的 SKU 字段
+        $arr['skus'] = $this->skus->map(function (ProductSku $sku) {
+            return Arr::only($sku->toArray(), ['title', 'description', 'price']);
+        });
+        // 只取出需要的商品属性字段
+        $arr['properties'] = $this->properties->map(function (ProductProperty $property) {
+            return Arr::only($property->toArray(), ['name', 'value']);
+        });
+
+        return $arr;
     }
 }
