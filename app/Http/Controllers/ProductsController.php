@@ -43,7 +43,7 @@ class ProductsController extends Controller
             foreach ($keywords as $keyword) {
                 $params['body']['query']['bool']['must'][] = [
                     'multi_match' => [
-                        'query'  => $keyword,
+                        'query' => $keyword,
                         'fields' => [
                             'title^3',
                             'long_title^2',
@@ -98,7 +98,7 @@ class ProductsController extends Controller
                             'terms' => [
                                 'field' => 'properties.name',
                             ],
-                            'aggs'  => [
+                            'aggs' => [
                                 'value' => [
                                     'terms' => [
                                         'field' => 'properties.value',
@@ -128,8 +128,7 @@ class ProductsController extends Controller
                         // 指明 nested 字段
                         'path' => 'properties',
                         'query' => [
-                            ['term' => ['properties.name' => $name]],
-                            ['term' => ['properties.value' => $value]],
+                            ['term' => ['properties.search_value' => $filter]],
                         ],
                     ],
                 ];
@@ -164,9 +163,9 @@ class ProductsController extends Controller
                         'key' => $bucket['key'],
                         'values' => collect($bucket['value']['buckets'])->pluck('key')->all(),
                     ];
-                 })->filter(function ($property) use ($propertyFilters) {
+                })->filter(function ($property) use ($propertyFilters) {
                     // 过滤掉只剩下一个值 或者 已经在筛选条件里的属性
-                    return count($property['values']) > 1 && !isset($propertyFilters[$property['key']]) ;
+                    return count($property['values']) > 1 && !isset($propertyFilters[$property['key']]);
                 });
         }
 
