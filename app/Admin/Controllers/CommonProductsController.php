@@ -30,6 +30,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Jobs\SyncOneProductToES;
 use App\Models\Category;
 use App\Models\Product;
 use Encore\Admin\Controllers\AdminController;
@@ -39,9 +40,11 @@ use Encore\Admin\Grid;
 use Encore\Admin\Grid\Displayers\Actions;
 use Encore\Admin\Grid\Tools;
 use Encore\Admin\Layout\Content;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 
 abstract class CommonProductsController extends AdminController
 {
+    use DispatchesJobs;
     /**
      * 定义一个抽象方法，返回当前管理的商品类型
      * @return mixed
@@ -143,6 +146,13 @@ abstract class CommonProductsController extends AdminController
         // 定义事件回调，当模型即将保存时会触发这个回调
         $form->saving(function (Form $form) {
             $form->model()->price = collect($form->input('skus'))->where(Form::REMOVE_FLAG_NAME, 0)->min('price') ?: 0;
+        });
+
+        // 定义事件回调，当模型保存成功后会触发这个回调
+        $form->saved(function (Form $form) {
+            $product = $form->model();
+            // 新增或者修改商品后同步商品数据至 Elasticsearch
+            $this->dispatch(new SyncOneProductToES($product));
         });
 
         return $form;
